@@ -6,7 +6,6 @@ import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 
-
 export default function Login() {
     const { data: session, status } = useSession();
 
@@ -21,7 +20,6 @@ export default function Login() {
                         width={40}
                         height={40}
                     />
-                    
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
                     <Button variant="secondary" onMouseDown={() => signOut({ callbackUrl: "/" })}>Sign out</Button>
@@ -31,7 +29,15 @@ export default function Login() {
     }
 
     return (
-        <Button onMouseDown={() => { signIn("github"); }} variant="secondary" className="rounded-2xl bg-blue-600 hover:bg-blue-900 text-white ml-2">
+        <Button 
+            onMouseDown={() => { 
+                signIn("github", { 
+                    callbackUrl: "https://recall-q91s.vercel.app" 
+                }); 
+            }} 
+            variant="secondary" 
+            className="rounded-2xl bg-blue-600 hover:bg-blue-900 text-white ml-2"
+        >
             Sign in
         </Button>
     );
